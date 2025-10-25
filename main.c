@@ -654,41 +654,41 @@ static void load_buttons(GtkContainer *container)
         
 	    for (int j = 0; j < num_col; j++)
 	    {
-	        if (buttons[count].text && show_bind)
-	        {
-	            strcat(buttons[count].text, "[");
-	            strcat(buttons[count].text, (char *)&buttons[count].bind);
-	            strcat(buttons[count].text, "]");
-	        }
-	
-	        but[i][j] = gtk_button_new_with_label(buttons[count].text);
-	        gtk_widget_set_name(but[i][j], buttons[count].label);
-	
-	        gtk_label_set_yalign(
-	            GTK_LABEL(gtk_bin_get_child(GTK_BIN(but[i][j]))),
-	            buttons[count].yalign);
-	        gtk_label_set_xalign(
-	            GTK_LABEL(gtk_bin_get_child(GTK_BIN(but[i][j]))),
-	            buttons[count].xalign);
-	
-	        if (buttons[count].circular)
-	        {
-	            gtk_style_context_add_class(
-	            gtk_widget_get_style_context(but[i][j]), "circular");
-	        }
-	
-	        /* connect click action */
-	        g_signal_connect(but[i][j], "clicked",
-			G_CALLBACK(execute), buttons[count].action);
-	
-	        /* add mouse-hover focus */
-	        g_signal_connect(but[i][j], "enter-notify-event",
-	                G_CALLBACK(gtk_widget_grab_focus), but[i][j]);
-	
-	    	gtk_widget_set_hexpand(but[i][j], TRUE);
-	    	gtk_widget_set_vexpand(but[i][j], TRUE);
-	    	gtk_grid_attach(GTK_GRID(grid), but[i][j], i, j, 1, 1);
-	    	count++;
+		    if (buttons[count].text && show_bind)
+		    {
+			    strcat(buttons[count].text, "[");
+			    strcat(buttons[count].text, (char *)&buttons[count].bind);
+			    strcat(buttons[count].text, "]");
+		    }
+
+		    but[i][j] = gtk_button_new_with_label(buttons[count].text);
+		    gtk_widget_set_name(but[i][j], buttons[count].label);
+
+		    gtk_label_set_yalign(
+			    GTK_LABEL(gtk_bin_get_child(GTK_BIN(but[i][j]))),
+			    buttons[count].yalign);
+		    gtk_label_set_xalign(
+			    GTK_LABEL(gtk_bin_get_child(GTK_BIN(but[i][j]))),
+			    buttons[count].xalign);
+
+		    if (buttons[count].circular)
+		    {
+			    gtk_style_context_add_class(
+			    gtk_widget_get_style_context(but[i][j]), "circular");
+		    }
+
+		    /* connect click action */
+		    g_signal_connect(but[i][j], "clicked",
+		    G_CALLBACK(execute), buttons[count].action);
+
+		    /* add mouse-hover focus */
+		    g_signal_connect(but[i][j], "enter-notify-event",
+				    G_CALLBACK(gtk_widget_grab_focus), but[i][j]);
+
+		    gtk_widget_set_hexpand(but[i][j], TRUE);
+		    gtk_widget_set_vexpand(but[i][j], TRUE);
+		    gtk_grid_attach(GTK_GRID(grid), but[i][j], i, j, 1, 1);
+		    count++;
 	    }
 
     }
